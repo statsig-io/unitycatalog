@@ -8,6 +8,12 @@ import org.apache.iceberg.io.OutputFile;
 public class SimpleLocalFileIO implements FileIO {
   @Override
   public InputFile newInputFile(String path) {
+    // Handle file:// URIs by stripping the scheme
+    if (path.startsWith("file://")) {
+      path = path.substring(7); 
+    } else if (path.startsWith("file:")) {
+      path = path.substring(5); 
+    }
     return Files.localInput(path);
   }
 
