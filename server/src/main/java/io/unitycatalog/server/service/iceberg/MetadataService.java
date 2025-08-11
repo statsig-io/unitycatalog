@@ -19,7 +19,28 @@ public class MetadataService {
     // TODO: cache fileIO
     FileIO fileIO = fileIOFactory.getFileIO(metadataLocationUri);
 
-    return CompletableFuture.supplyAsync(() -> TableMetadataParser.read(fileIO, metadataLocation))
-        .join();
+    try {
+
+      String pathForParser = metadataLocation;
+      if (metadataLocation.startsWith("file://")) {
+        pathForParser = metadataLocation.substring(7);
+      } else if (metadataLocation.startsWith("file:")) {
+        pathForParser = metadataLocation.substring(5);
+      }
+
+      System.err.println("DEBUG: Reading metadata from: " + metadataLocation);
+      System.err.println("DEBUG: Path for parser: " + pathForParser);
+
+      final String finalPath = pathForParser;
+      return CompletableFuture.supplyAsync(() -> TableMetadataParser.read(fileIO, finalPath))
+          .join();
+    } catch (Exception e) {
+      System.err.println("Error reading metadata from " + metadataLocation + ": " + e.getMessage());
+      if (e.getCause() != null) {
+        System.err.println("Caused by: " + e.getCause().getMessage());
+        e.getCause().printStackTrace();
+      }
+      throw new IllegalArgumentException(metadataLocation + " is not a valid metadata file", e);
+    }
   }
 }

@@ -1556,6 +1556,7 @@ components:
         - PARQUET
         - ORC
         - TEXT
+        - ICEBERG
     TableInfo:
       type: object
       properties:
