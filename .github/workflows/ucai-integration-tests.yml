@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   crewai_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.10']
@@ -43,7 +43,7 @@ jobs:
           pytest integrations/crewai/tests --ignore=integrations/crewai/tests/test_crewai_toolkit_oss.py
 
   langchain_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
@@ -69,7 +69,7 @@ jobs:
           pytest integrations/langchain/tests --ignore=integrations/langchain/tests/test_langchain_toolkit_oss.py
 
   anthropic_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
@@ -95,7 +95,7 @@ jobs:
           pytest integrations/anthropic/tests --ignore=integrations/anthropic/tests/test_anthropic_toolkit_oss.py
 
   llamaindex_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
@@ -121,7 +121,7 @@ jobs:
           pytest integrations/llama_index/tests --ignore=integrations/llama_index/tests/test_llama_index_toolkit_oss.py
 
   openai_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
@@ -147,7 +147,7 @@ jobs:
           pytest integrations/openai/tests --ignore=integrations/openai/tests/test_openai_toolkit_oss.py
 
   autogen_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.10']
@@ -173,7 +173,7 @@ jobs:
           pytest integrations/autogen/tests --ignore=integrations/autogen/tests/test_autogen_toolkit_oss.py
 
   gemini_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
@@ -199,7 +199,7 @@ jobs:
           pytest integrations/gemini/tests --ignore=integrations/gemini/tests/test_gemini_toolkit_oss.py
 
   litellm_test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']

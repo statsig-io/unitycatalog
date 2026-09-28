@@ -14,7 +14,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     timeout-minutes: 10
     defaults:
       run:
@@ -37,7 +37,7 @@ jobs:
         run: yamllint .
 
   core_tests:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     strategy:
       matrix:
         python-version: ['3.9', '3.10']
